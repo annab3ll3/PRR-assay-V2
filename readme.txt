@@ -4,7 +4,8 @@ October 2022, Version 8.3.1
 
 	Purpose:
 	This code is designed for analysis of PRR assay data, i.e. the number of parasites surviving drug treatment (viable parasites) over time of drug exposure.
-	It provides you with the lag phase of the drug, the PRR (log10 drop of viable parasites within 48 h) and the 99.9% parasite clearance time (time to kill 99.9% of the initial 100 000 parasites). Details can be found in the publication: https://doi.org/10.3390/ph16020163.
+	It provides you with the lag phase of the drug, the PRR (log10 drop of viable parasites within 48 h) and the 99.9% parasite clearance time (time to kill 99.9% of the initial 100 000 parasites). 
+	Details can be found in the publication: https://doi.org/10.3390/ph16020163.
 
 	How to use this code:
 	- The input file containing the raw data (log10 viable parasites, normalized) should have the same format as provided in the example (input_example.xslx).
