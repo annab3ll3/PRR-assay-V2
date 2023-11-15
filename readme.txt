@@ -1,5 +1,6 @@
 
 Automated and standardized data analysis for the Plasmodium falciparum in vitro Parasite Reduction Ratio (PRR) assay.
+Publication DOI: 10.3390/ph16020163 (https://pubmed.ncbi.nlm.nih.gov/37009844/)
 October 2022, Version 8.3.1
 
 	Purpose:
