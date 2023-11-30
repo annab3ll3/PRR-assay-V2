@@ -124,12 +124,12 @@ for (drugk in unique(measurements$new)) { ## cycling through each drug_campaign 
   ### Lag phase
   lags1 = c(0.1, 6, 12,  18, 23.9, 30, 36, 42, 47.9, 54, 60, 66, 71.9)                  ## create a list of dummy lag times use by the model
   lags = data.frame("LAG" = lags1)                                                      ## create data frame containing these lag times
-  lags$sigma = Inf                                                                      ## create a column for the ?? values (residual standard deviation), the default is set to infinity
+  lags$sigma = Inf                                                                      ## create a column for the sigma values (residual standard deviation), the default is set to infinity
   counter = 1                                                                           ## set a counter for the coming loop that will cycle through all the lag times 
   
   for (lag in lags$LAG) { ## cycle through the dummy lag times and fit the model by fixing the lag time to each of them
     
-    ## If the nls returns an error (i.e. the fit is very, very bad), ?? is set to infinity for that specific lag phase and continue
+    ## If the nls returns an error (i.e. the fit is very, very bad), sigma is set to infinity for that specific lag phase and continue
     if(is.error(try(nls(formula =  y ~ ifelse(x<=lag, 5, pmax(-a * (x-lag) + 5, minima)), start=list(a=0.05), 
                         data=data, algorithm = "port", lower=list(a=0), upper=list(a=1))))){ 
       lags$sigma[counter] = Inf  
@@ -148,9 +148,9 @@ for (drugk in unique(measurements$new)) { ## cycling through each drug_campaign 
                   lower=list(a=0),    ## parasite decline not allowed to be less than zero
                   upper=list(a=1))    ## parasite decline not allowed to be higher than 1 (i.e. PRR = 48)
       
-    if(is.error(try(summary(model)))) {   ## if the model summary returns an error (i.e. the fit is very, very bad), ?? is set to infinity
+    if(is.error(try(summary(model)))) {   ## if the model summary returns an error (i.e. the fit is very, very bad), sigma is set to infinity
         lags$sigma[counter] = Inf         
-      } else {                            ## if the model summary does does not return an error, we can retrieve the ?? value from it
+      } else {                            ## if the model summary does does not return an error, we can retrieve the sigma value from it
         summary = summary(model)            
         lags$sigma[counter] = summary$sigma 
       }}
